@@ -53,7 +53,9 @@ public class NewCar {
 
 	@Override
 	public String toString() {
-		return "NewCar [make=" + make + ", model=" + model + ", year=" + year + ", price=" + price + "]";
+		// return "NewCar [make=" + make + ", model=" + model + ", year=" + year + ",
+		// price=" + price + "]";
+		return String.format("%1$-10s %2$-10s %3$-10d $%4$,10.2f", make, model, year, price);
 	}
 
 }

@@ -1,3 +1,7 @@
+/*
+ * Lab 11 Part 1 by Jiao Xu and Vicki Rush with help from Tim Pieniazek
+ *   May 7, 2018
+ */
 package com.cars.gc;
 
 import java.util.ArrayList;
@@ -32,10 +36,11 @@ public class CarApp {
 		}
 		System.out.println("Current Inventory:");
 
-		// for (int i = 1; i <= carNum; i++) {
-		System.out.println(inventory);
+		for (int i = 0; i < inventory.size(); i++) {
+			System.out.println(inventory.get(i));
+		}
 
-		// }
+		// System.out.println(inventory);
 		scan.close();
 	}
 }
