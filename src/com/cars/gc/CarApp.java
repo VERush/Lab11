@@ -11,33 +11,47 @@ public class CarApp {
 
 	public static void main(String[] args) {
 
-		int carNum = 0;
+		int menu = 0;
+		int quit;
+		String cont = "y";
+		String buyYN;
 		ArrayList<NewCar> inventory = new ArrayList<>();
+		inventory.add(new NewCar("Chevrolet", "Malibu", 2012, 12000.00));
+		inventory.add(new NewCar("Honda", "Odyssey", 2015, 35000.00));
+		inventory.add(new NewCar("Lexus", "SC150", 2013, 45000.00));
+		inventory.add(new UsedCar("Ford", "Focus", 2010, 8000.00, 12075.34));
+		inventory.add(new UsedCar("Nissan", "Maxima", 2008, 6500.00, 35056.02));
+		inventory.add(new UsedCar("Pontiac", "Skylark", 1999, 4000.00, 52015.78));
 
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Welcome to the Grand Circus Motors admin console!");
-		System.out.println("How many cars are you entering: ");
-		carNum = scan.nextInt();
-		scan.nextLine();
+		System.out.println("Welcome to Grand Circus Motors!");
 
-		for (int i = 1; i <= carNum; i++) {
-			NewCar thisCar = new NewCar();
-			System.out.println("Enter Car #" + i + " Make: ");
-			thisCar.setMake(scan.nextLine());
-			System.out.println("Enter Car #" + i + " Model: ");
-			thisCar.setModel(scan.nextLine());
-			System.out.println("Enter Car #" + i + " Year: ");
-			thisCar.setYear(scan.nextInt());
-			System.out.println("Enter Car #" + i + " Price: ");
-			thisCar.setPrice(scan.nextDouble());
-			System.out.println();
-			inventory.add(thisCar);
+		System.out.println("Here is our Current Inventory:");
+
+		while (cont == "y") {
+
+			for (int i = 0; i < inventory.size(); i++) {
+				menu = i + 1;
+				System.out.print(menu + ". ");
+				System.out.println(inventory.get(i));
+			}
+			quit = menu + 1;
+			System.out.println(quit + ". Quit");
+			System.out.println("Which car would you like? ");
+			menu = scan.nextInt();
 			scan.nextLine();
-		}
-		System.out.println("Current Inventory:");
-
-		for (int i = 0; i < inventory.size(); i++) {
-			System.out.println(inventory.get(i));
+			if (menu == quit) {
+				System.out.println("Have a great day!");
+				cont = "";
+			} else {
+				System.out.println(inventory.get(menu - 1));
+				System.out.println("Would you like to buy this car? ");
+				buyYN = scan.nextLine();
+				if (buyYN.equalsIgnoreCase("y")) {
+					inventory.remove(menu - 1);
+					System.out.println("Excellent! Our finance department will be in touch shortly.");
+				}
+			}
 		}
 
 		// System.out.println(inventory);
